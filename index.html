@@ -1,0 +1,108 @@
+<html lang="en">
+    <head>        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random Quote Machine</title>
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script>
+          const quoteBank = [
+            {
+              quote: '"It always seems impossible until it is done."',
+              author: "Nelson Mandela"
+            },
+            {
+              quote: '"Success is not final, failure is not fatal: It is the courage to continue that counts."',
+              author: "Winston Churchill"
+            },
+            {
+              quote: '"A bend in the road is not the end of the road… unless you fail to make the turn."',
+              author: "Helen Keller"
+            },
+            {
+              quote: '"It\'s always too soon to quit!"',
+              author: "Norman Vincent Peale"
+            },
+            {
+              quote: '"The only guarantee for failure is to stop trying."',
+              author: "John C. Maxwell"
+            },
+            {
+              quote: '"Many of life\'s failures are people who did not realise how close they were to success when they gave up."',
+              author: "Thomas Edison"
+            },
+            {
+              quote: '"Failure is only the opportunity to begin again, this time more intelligently."',
+              author: "Henry Ford"
+            },
+            {
+              quote: '"Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do."',
+              author: "Pele"
+            },
+            {
+              quote: '"Fall seven times and stand up eight."',
+              author: "Japanese Proverb"
+            },
+            {
+              quote: '"Perseverance is not a long race; it is many short races one after the other."',
+              author: "Walter Elliot"
+            }            
+          ];
+
+          window.onload = init;
+          function init() {
+            generateQuote()
+          }
+
+          function generateQuote () {
+            setBackground();
+            let quoteSize = quoteBank.length;
+            let randomIndex = Math.floor(Math.random() * quoteSize);
+            let randomQuote = quoteBank[randomIndex]
+            
+            let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22"
+
+            // Add The Quote
+            let quoteInApiFormat = randomQuote.quote.replace(/ /g, '%20')
+            twitterLink += quoteInApiFormat
+            
+            // Add The Author
+            let authorInApiFormat = " - " + randomQuote.author.replace(/ /g, '%20')
+            twitterLink += authorInApiFormat
+
+            document.getElementById("text").innerText = randomQuote.quote;
+            document.getElementById("author").innerText = randomQuote.author;
+            document.getElementById("tweet-quote").href = twitterLink
+          }
+
+          function generateBackground () {
+            let randomColor = () => { 
+               return Math.floor(Math.random() * 255);
+            }
+            let colorArr = [randomColor(), randomColor(), randomColor()]
+            let rgbaCombination = "rgb(" + colorArr.join(', ') + ')';
+            return rgbaCombination
+          }
+
+          function setBackground () {
+            let rootSelector = document.querySelector(':root');
+            let backgroundCombination = generateBackground();
+            rootSelector.style.setProperty('--main-color', backgroundCombination);
+          }
+        </script>
+    </head>
+    <body>  
+      <div id="body-box">
+        <wrapper id="quote-box">
+          <h2 id="text"></h2>
+          <p id="author"></p>
+          <div id="buttons">              
+            <a id="tweet-quote" href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+            <button id="new-quote" onclick=generateQuote()>New Quote</button>
+          </div>         
+        </wrapper>
+        <p id="credits">created by Ivan Consorte</p>           
+      </div>       
+      <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>

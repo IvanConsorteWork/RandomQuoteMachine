@@ -1,0 +1,104 @@
+:root {
+  --main-color: rgb(122, 122, 122);
+}
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  color: var(--main-color);
+  background-color: var(--main-color);
+  font-size: 20px;
+  transition: color 2s, background-color 2s;  
+}
+
+#quote-box {
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5%;
+  position: relative;
+  bottom: 50px;
+}
+
+#text {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+#author {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 20%;
+  padding: 10px;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  padding: 10px 0px
+}
+
+#new-quote {
+  border: none;
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 10%;
+  padding: 10px;
+  transition: background-color 2s;
+}
+
+.fa {
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px;
+  border-radius: 10%;
+  transition: background-color 2s;
+}
+
+#credits {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: auto;
+  color: white;
+  font-size: 1.5rem;
+  padding: 20px;
+  position: relative;
+  bottom: 50px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
